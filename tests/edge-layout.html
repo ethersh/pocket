@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>
+* { box-sizing: border-box; } html, body { margin: 0; height: 100%; background: #111; color: #eee; font-family: sans-serif; }
+[data-slot=sidebar-wrapper] { height: 100dvh; padding-top: var(--safe-top, 0px); display: flex; }
+[data-slot=sidebar-panel], main { display: flex; flex: 1; min-height: 0; flex-direction: column; }
+main > div { position: relative; display: flex; flex: 1; flex-direction: column; overflow: clip; }
+.backdrop { position: absolute; inset: 0; pointer-events: none; } canvas { width: 100%; height: 100%; }
+.top-1\.5 { position: absolute; top: .375rem; left: 16px; }
+.welcome { position: relative; margin: auto; padding: 24px; text-align: center; background: #111e; border-radius: 20px; }
+[data-slot=sheet-content] { position: fixed; inset: 0 auto 0 0; width: 60%; background: #19191b; padding: var(--safe-top) 16px 0; }
+[data-slot=sheet-content][hidden] { display: none; } header { height: 44px; display: flex; align-items: center; }
+.status { pointer-events: none; position: fixed; top: 0; height: 59px; left: 0; right: 0; display: flex; justify-content: space-between; padding: 18px 22px; font-weight: bold; }
+button { background: #262629; color: inherit; border: 0; border-radius: 8px; padding: 10px; }
+</style></head><body>
+<div data-slot="sidebar-wrapper"><div data-slot="sidebar-panel"><main><div>
+<div class="backdrop" aria-hidden="true"><canvas width="390" height="844"></canvas></div>
+<button class="top-1.5">☰</button><div class="welcome"><h2>Live background</h2><p>Layout fixture · not a device screenshot</p></div>
+</div></main></div></div>
+<aside data-slot="sheet-content" hidden><header>Navigation</header><button>New thread</button></aside>
+<div class="status"><span>8:15</span><span>● ▰</span></div>
+<script>
+window.paintTheme = function(color) {
+  const canvas = document.querySelector('canvas'), context = canvas.getContext('2d');
+  context.fillStyle = '#101113'; context.fillRect(0,0,390,844); context.fillStyle = color;
+  for (let y=0;y<844;y+=8) for(let x=0;x<390;x+=8) if((x+y)%24!==0) context.fillRect(x,y,4,4);
+}; window.paintTheme('#287d76');
+</script></body></html>
