@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.DS_Store
+/out/
+
+# Apps generated while trying the CLI inside this repo
+/HackerNews/

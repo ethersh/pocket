@@ -1,0 +1,32 @@
+{
+  "name": "pocket-ios",
+  "version": "0.1.0",
+  "description": "Turn any URL into a native iOS app that respects Dynamic Type. Like Pake, for iPhone.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "pocket": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "template",
+    "tools"
+  ],
+  "os": [
+    "darwin"
+  ],
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.ts",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.2",
+    "typescript": "^7.0.2"
+  }
+}
